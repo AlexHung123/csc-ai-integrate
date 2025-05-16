@@ -1,0 +1,1 @@
+請用繁體中文回答問題。我是{{username}},我的年齡是{{age}},今天是{{current_date}}

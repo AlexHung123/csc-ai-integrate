@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csc.java.ai.langchain4j.mapper.TrainingHistoryResourceMapper">
+    <select id="selectTrainingHistoryDataByCollegeId" resultType="com.csc.java.ai.langchain4j.dto.TrainingHistoryDTO">
+        select
+            college_id as collegeId,
+            concat(first_name,' ', last_name) as name,
+            resource_name_en as courseName,
+            created_time as createdTime
+        from training_history_resource thr
+        where college_id = #{collegeId} and deleted_time is null
+    </select>
+</mapper>

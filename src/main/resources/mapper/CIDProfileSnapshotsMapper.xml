@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csc.java.ai.langchain4j.mapper.CIDProfileSnapshotsMapper">
+    <select id="selectTraineeProfileData" resultType="com.csc.java.ai.langchain4j.dto.TraineeProfileDTO">
+        SELECT
+            cps.college_id AS collegeId,
+            MIN(cps.created_time) AS minCreatedTime,
+            r.name_en AS rankNameEn,
+            o.name_en as departmentNameEn
+        FROM cid_profile_snapshots cps
+        INNER JOIN "rank" r ON cps.substantive_rank_id = r.id
+        inner join organisation o on cps.org_id = o.id
+        WHERE cps.college_id = #{collegeId}
+        GROUP BY cps.college_id, cps.substantive_rank_id, r.name_en, o.name_en
+    </select>
+</mapper>
