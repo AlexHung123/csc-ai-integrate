@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.csc.java.ai.langchain4j.dto.TraineeProfileDTO;
 import com.csc.java.ai.langchain4j.dto.TrainingHistoryDTO;
 import com.csc.java.ai.langchain4j.entity.TrainingHistoryResource;
+import dev.langchain4j.agent.tool.P;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

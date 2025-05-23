@@ -21,7 +21,7 @@ public class GenerateTraineeProfileTools {
 
     @Autowired
     private CIDProfileSnapshotsService cidProfileSnapshotsService;
-    @Tool(name = "Creating formal English descriptions for trainee profiles")
+
     public String generateTraineeProfileEnglishCoverDescription(@P(value = "College ID") String collegeId) {
         List<TraineeProfileDTO> results1 = cidProfileSnapshotsService.getTraineeProfileData(collegeId);
         List<TrainingHistoryDTO> results2 = trainingHistoryResourceService.selectTrainingHistoryDataByCollegeId(collegeId);
@@ -36,30 +36,52 @@ public class GenerateTraineeProfileTools {
         return sb.toString();
     }
 
+
+//    @Tool(name = "Creating formal English descriptions for trainee profiles")
+//    public String generateTraineeProfileEnglishCoverDescription(@P(value = "College ID") String collegeId) {
+//        List<TraineeProfileDTO> results1 = cidProfileSnapshotsService.getTraineeProfileData(collegeId);
+//        List<TrainingHistoryDTO> results2 = trainingHistoryResourceService.selectTrainingHistoryDataByCollegeId(collegeId);
+//
+//        String profileData = formatProfileData(results1);
+//        String trainingHistory = formatTrainingHistory(results2);
+//
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(profileData).append("\n").append(trainingHistory).append("\n");
+//
+//        System.out.println(sb);
+//        return sb.toString();
+//    }
+
     private String formatProfileData(List<TraineeProfileDTO> profiles) {
         if (profiles == null || profiles.isEmpty()) return "";
 
         StringBuilder sb = new StringBuilder();
+        sb.append("no_think Posting Change:\n");
         for (TraineeProfileDTO dto : profiles) {
             sb.append(String.format("Appointed %s at %s in %s.\n",
                     dto.getRankNameEn(),
                     dto.getDepartmentNameEn(),
-                    dto.getMinCreatedTime().toLocalDate().format(DateTimeFormatter.ofPattern("MMMM yyyy"))));
+                    dto.getMinCreatedTime().toString().substring(0, 10)));
         }
         return sb.toString();
     }
+
 
     private String formatTrainingHistory(List<TrainingHistoryDTO> histories) {
         if (histories == null || histories.isEmpty()) return "";
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Key training highlights:\n");
+        sb.append("Training History:\n");
 
         for (TrainingHistoryDTO dto : histories) {
-            String keyword = extractKeyword(dto.getCourseName()); // 提取中文关键词
-            sb.append(String.format("- Participated in [%s] in %s. This training aligns with national policy directions.\n",
+            String keyword = extractKeyword(dto.getCourseName());
+
+            // 截取前10位作为日期（YYYY-MM-DD）
+            String dateStr = dto.getCreatedTime().substring(0, 10);
+
+            sb.append(String.format("Participated in [%s] in %s.\n",
                     keyword,
-                    LocalDate.parse(dto.getCreatedTime()).format(DateTimeFormatter.ofPattern("yyyy"))));
+                    dateStr));
         }
         return sb.toString();
     }

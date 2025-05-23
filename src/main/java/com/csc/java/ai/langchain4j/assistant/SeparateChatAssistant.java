@@ -8,7 +8,7 @@ import dev.langchain4j.service.V;
 import dev.langchain4j.service.spring.AiService;
 import dev.langchain4j.service.spring.AiServiceWiringMode;
 
-@AiService(wiringMode = AiServiceWiringMode.EXPLICIT, chatModel = "ollamaChatModel", chatMemoryProvider = "chatMemoryProvider", tools = "generateTraineeProfileTools")
+@AiService(wiringMode = AiServiceWiringMode.EXPLICIT, chatModel = "ollamaChatModel", chatMemoryProvider = "chatMemoryProvider", tools = "calculatorTools")
 public interface SeparateChatAssistant {
 
 //    @SystemMessage("請用繁體中文回答問題。今天是{{current_date}}")
