@@ -136,6 +136,11 @@ public class RagflowService {
                 .takeUntil(answer -> answer.endsWith(";")) // Stop when the final SQL query is detected
                 .last() // Get the last emitted value (final SQL query)
                 .block();
+//        System.out.println(queryString);
+
+//        if (!queryString.endsWith(";")) {
+//            queryString += ";";
+//        }
         return queryString;
     }
 
@@ -144,7 +149,8 @@ public class RagflowService {
             JsonNode jsonNode = objectMapper.readTree(jsonResponse); // Use Jackson ObjectMapper
             JsonNode dataNode = jsonNode.path("data");
             if (!dataNode.isMissingNode() && dataNode.has("answer")) {
-                return dataNode.get("answer").asText().replace("```sql", "").replace("```", "").replace("<think>", "").replace("</think>","").trim();
+                return dataNode.get("answer").asText().replace("```sql", "").replace("```", "").replace("<think>", "").replace("</think>", "").trim();
+
             }
         } catch (Exception e) {
             System.err.println("Error parsing JSON response: " + e.getMessage());
