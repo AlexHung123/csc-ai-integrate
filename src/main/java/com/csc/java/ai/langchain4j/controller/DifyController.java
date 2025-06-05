@@ -16,7 +16,7 @@ import reactor.core.publisher.Flux;
 @RequiredArgsConstructor
 public class DifyController {
 
-    @Value("${dify.key.test}")
+    @Value("${dify.api.key}")
     private String testKey;
 
     private final DifyService difyService;

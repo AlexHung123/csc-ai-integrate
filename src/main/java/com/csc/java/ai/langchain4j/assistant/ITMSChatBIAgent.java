@@ -13,8 +13,8 @@ import reactor.core.publisher.Flux;
         wiringMode = AiServiceWiringMode.EXPLICIT,
 //        chatModel = "ollamaChatModel",
 //        chatModel = "openAiChatModel",
-//        streamingChatModel = "openAiStreamingChatModel",
-        streamingChatModel = "ollamaStreamingChatModel",
+        streamingChatModel = "openAiStreamingChatModel",
+//        streamingChatModel = "ollamaStreamingChatModel",
         chatMemoryProvider = "chatBIMemoryProviderITMS"
 )
 public interface ITMSChatBIAgent {
