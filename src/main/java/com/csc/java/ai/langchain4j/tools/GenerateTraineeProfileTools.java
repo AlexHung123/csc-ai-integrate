@@ -36,22 +36,6 @@ public class GenerateTraineeProfileTools {
         return sb.toString();
     }
 
-
-//    @Tool(name = "Creating formal English descriptions for trainee profiles")
-//    public String generateTraineeProfileEnglishCoverDescription(@P(value = "College ID") String collegeId) {
-//        List<TraineeProfileDTO> results1 = cidProfileSnapshotsService.getTraineeProfileData(collegeId);
-//        List<TrainingHistoryDTO> results2 = trainingHistoryResourceService.selectTrainingHistoryDataByCollegeId(collegeId);
-//
-//        String profileData = formatProfileData(results1);
-//        String trainingHistory = formatTrainingHistory(results2);
-//
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(profileData).append("\n").append(trainingHistory).append("\n");
-//
-//        System.out.println(sb);
-//        return sb.toString();
-//    }
-
     private String formatProfileData(List<TraineeProfileDTO> profiles) {
         if (profiles == null || profiles.isEmpty()) return "";
 

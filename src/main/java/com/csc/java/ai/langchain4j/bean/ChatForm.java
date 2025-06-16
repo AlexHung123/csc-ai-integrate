@@ -10,7 +10,7 @@ import lombok.Data;
 public class ChatForm {
     @Schema(description = "Memory ID for chat context", example = "1")
     @NotNull(message = "Memory ID is required")
-    private Long memoryId;
+    private String memoryId;
 
     @Schema(description = "User message", example = "What is the status of my training?")
     @NotBlank(message = "Message cannot be empty")

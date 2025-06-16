@@ -128,7 +128,10 @@ public class RagflowService {
                 .bodyValue(requestBody)
                 .retrieve()
                 .bodyToFlux(String.class)
-                .map(chunk -> "responseData:" + chunk + "\n");
+                .map(chunk -> {
+                    String cleanedChunk = chunk.replaceAll("##\\d+\\$\\$", "").trim();
+                    return "responseData:" + cleanedChunk + "\n";
+                });
     }
 
     private String parseJsonResponse(String jsonResponse) {

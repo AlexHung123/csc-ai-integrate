@@ -44,7 +44,10 @@ public class ITMSChatBIController {
     @PostMapping(value = "/chat/stream", produces = "text/stream;charset=utf-8")
     public Flux<String> chatBIStream(@RequestBody ChatForm chatForm) {
         try {
-            String sqlQuery = ragflowService.getStreamData(chatForm.getMessage() + " no_think", AGENT_ID_AI_HEAD);
+            String sqlQuery = ragflowService.getStreamData(chatForm.getMessage(), AGENT_ID_AI_HEAD);
+            if(sqlQuery == "Nothing found in Q-SQL!" || sqlQuery == "") {
+                return Flux.just(DEFAULT_ERROR_MESSAGE);
+            }
             List<Map<String, Object>> result = dynamicMapper.executeDynamicQuery(sqlQuery);
 
             if (result.isEmpty()) {

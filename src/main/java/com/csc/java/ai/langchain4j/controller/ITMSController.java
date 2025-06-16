@@ -22,9 +22,9 @@ public class ITMSController {
     @Autowired
     private GenerateTraineeProfileTools generateTraineeProfileTools;
 
-    @Operation(summary = "chat")
-    @PostMapping("/chat")
-    public String chat(@RequestBody ChatForm chatForm) {
-        return itmsAgent.chat(chatForm.getMemoryId(), generateTraineeProfileTools.generateTraineeProfileEnglishCoverDescription("CS943939"));
-    }
+//    @Operation(summary = "chat")
+//    @PostMapping("/chat")
+//    public String chat(@RequestBody ChatForm chatForm) {
+//        return itmsAgent.chat(chatForm.getMemoryId(), generateTraineeProfileTools.generateTraineeProfileEnglishCoverDescription("CS943939"));
+//    }
 }
