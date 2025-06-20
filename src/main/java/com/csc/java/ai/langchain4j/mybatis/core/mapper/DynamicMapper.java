@@ -1,4 +1,4 @@
-package com.csc.java.ai.langchain4j.mapper;
+package com.csc.java.ai.langchain4j.mybatis.core.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

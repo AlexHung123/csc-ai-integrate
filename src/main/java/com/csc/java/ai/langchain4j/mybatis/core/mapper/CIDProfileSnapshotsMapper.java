@@ -1,4 +1,4 @@
-package com.csc.java.ai.langchain4j.mapper;
+package com.csc.java.ai.langchain4j.mybatis.core.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.csc.java.ai.langchain4j.dto.TraineeProfileDTO;

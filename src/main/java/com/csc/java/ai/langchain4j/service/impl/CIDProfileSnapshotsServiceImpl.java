@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.csc.java.ai.langchain4j.dto.TraineeProfileDTO;
 import com.csc.java.ai.langchain4j.entity.CIDProfileSnapshots;
-import com.csc.java.ai.langchain4j.mapper.CIDProfileSnapshotsMapper;
+import com.csc.java.ai.langchain4j.mybatis.core.mapper.CIDProfileSnapshotsMapper;
 import com.csc.java.ai.langchain4j.service.CIDProfileSnapshotsService;
 import org.springframework.stereotype.Service;
 

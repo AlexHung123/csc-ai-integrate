@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.csc.java.ai.langchain4j.dto.TrainingHistoryDTO;
 import com.csc.java.ai.langchain4j.entity.TrainingHistoryResource;
-import com.csc.java.ai.langchain4j.mapper.TrainingHistoryResourceMapper;
+import com.csc.java.ai.langchain4j.mybatis.core.mapper.TrainingHistoryResourceMapper;
 import com.csc.java.ai.langchain4j.service.TrainingHistoryResourceService;
 import org.springframework.stereotype.Service;
 

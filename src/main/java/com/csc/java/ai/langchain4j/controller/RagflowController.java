@@ -1,13 +1,11 @@
 package com.csc.java.ai.langchain4j.controller;
 
-import com.csc.java.ai.langchain4j.bean.ChatForm;
-import com.csc.java.ai.langchain4j.mapper.DynamicMapper;
+import com.csc.java.ai.langchain4j.mybatis.core.mapper.DynamicMapper;
 import com.csc.java.ai.langchain4j.service.RagflowService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;

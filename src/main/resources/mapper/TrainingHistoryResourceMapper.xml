@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csc.java.ai.langchain4j.mapper.TrainingHistoryResourceMapper">
+<mapper namespace="com.csc.java.ai.langchain4j.mybatis.core.mapper.TrainingHistoryResourceMapper">
     <select id="selectTrainingHistoryDataByCollegeId" resultType="com.csc.java.ai.langchain4j.dto.TrainingHistoryDTO">
         select
             college_id as collegeId,

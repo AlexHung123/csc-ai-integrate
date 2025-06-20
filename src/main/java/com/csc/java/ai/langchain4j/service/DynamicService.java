@@ -1,6 +1,6 @@
 package com.csc.java.ai.langchain4j.service;
 
-import com.csc.java.ai.langchain4j.mapper.DynamicMapper;
+import com.csc.java.ai.langchain4j.mybatis.core.mapper.DynamicMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.csc.java.ai.langchain4j.controller;
 
 import com.csc.java.ai.langchain4j.assistant.ITMSChatBIAgent;
 import com.csc.java.ai.langchain4j.bean.ChatForm;
-import com.csc.java.ai.langchain4j.mapper.DynamicMapper;
+import com.csc.java.ai.langchain4j.mybatis.core.mapper.DynamicMapper;
 import com.csc.java.ai.langchain4j.service.RagflowService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +14,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Tag(name = "ITMS - Chat BI")
 @RestController
