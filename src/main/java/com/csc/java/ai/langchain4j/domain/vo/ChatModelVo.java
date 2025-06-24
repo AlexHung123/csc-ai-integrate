@@ -3,11 +3,9 @@ package com.csc.java.ai.langchain4j.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.csc.java.ai.langchain4j.domain.ChatModel;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
-import org.ruoyi.common.sensitive.annotation.Sensitive;
-import org.ruoyi.common.sensitive.core.SensitiveStrategy;
-import org.ruoyi.domain.ChatModel;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -86,7 +84,7 @@ public class ChatModelVo implements Serializable {
     /**
      * 密钥
      */
-    @Sensitive(strategy = SensitiveStrategy.PHONE)
+//    @Sensitive(strategy = SensitiveStrategy.PHONE)
     @ExcelProperty(value = "密钥")
     private String apiKey;
 

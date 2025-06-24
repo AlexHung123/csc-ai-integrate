@@ -1,6 +1,8 @@
 package com.csc.java.ai.langchain4j.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.csc.java.ai.langchain4j.core.utils.DateUtils;
+import com.csc.java.ai.langchain4j.core.utils.SSEUtil;
 import com.csc.java.ai.langchain4j.core.utils.StringUtils;
 import com.csc.java.ai.langchain4j.domain.vo.ChatModelVo;
 import com.csc.java.ai.langchain4j.entity.chat.BaseMessage;
@@ -8,6 +10,7 @@ import com.csc.java.ai.langchain4j.entity.chat.Message;
 import com.csc.java.ai.langchain4j.factory.ChatServiceFactory;
 import com.csc.java.ai.langchain4j.request.ChatRequest;
 import com.csc.java.ai.langchain4j.service.IChatModelService;
+import com.csc.java.ai.langchain4j.service.IChatService;
 import com.csc.java.ai.langchain4j.service.IChatSessionService;
 import com.csc.java.ai.langchain4j.service.ISseService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,7 +38,23 @@ public class SseServiceImpl implements ISseService {
     public SseEmitter sseChat(ChatRequest chatRequest, HttpServletRequest request) {
         SseEmitter sseEmitter = new SseEmitter(0L);
         try {
+            buildChatMessageList(chatRequest);
+            chatRequest.setRole(Message.Role.USER.getName());
 
+            IChatService chatService = chatServiceFactory.getChatService(chatModelVo.getCategory());
+            chatService.chat(chatRequest, sseEmitter);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+            SSEUtil.sendErrorEvent(sseEmitter,e.getMessage());
+        }
+        return sseEmitter;
+    }
+
+    public static String getFirst10Characters(String str) {
+        if (str.length() > 10) {
+            return str.substring(0, 10);
+        } else {
+            return str;
         }
     }
 
@@ -62,6 +81,23 @@ public class SseServiceImpl implements ISseService {
                     "#Note: Before replying, pay attention to the context and the tool return content.";
         }
 
-        Message.builder().content(sysPrompt).role(Message)
+        // set system default prompt
+        Message sysMessage = Message.builder().content(sysPrompt).role(Message.Role.SYSTEM).build();
+        messages.add(0, sysMessage);
+
+        chatRequest.setSysPrompt(sysPrompt);
+
+        // user content
+        String chatString = null;
+
+        Object content = messages.get(messages.size() - 1).getContent();
+        if (content instanceof List<?> listContent) {
+            if (CollectionUtil.isNotEmpty(listContent)) {
+                chatString = listContent.get(0).toString();
+            }
+        } else if (content instanceof String) {
+            chatString = (String) content;
+        }
+        chatRequest.setPrompt(chatString);
     }
 }

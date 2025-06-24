@@ -2,7 +2,6 @@ package com.csc.java.ai.langchain4j.entity.chat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.ruoyi.common.chat.entity.common.Usage;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,5 +20,5 @@ public class ChatCompletionResponse implements Serializable {
     private long created;
     private String model;
     private List<ChatChoice> choices;
-    private Usage usage;
+//    private Usage usage;
 }

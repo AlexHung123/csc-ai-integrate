@@ -2,9 +2,9 @@ package com.csc.java.ai.langchain4j.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.csc.java.ai.langchain4j.domain.ChatSession;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
-import org.ruoyi.domain.ChatSession;
 
 import java.io.Serial;
 import java.io.Serializable;

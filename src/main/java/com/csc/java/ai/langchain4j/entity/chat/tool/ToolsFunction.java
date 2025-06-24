@@ -1,11 +1,11 @@
 package com.csc.java.ai.langchain4j.entity.chat.tool;
 
 
+import com.csc.java.ai.langchain4j.entity.chat.Parameters;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ruoyi.common.chat.entity.chat.Parameters;
 
 import java.io.Serializable;
 
